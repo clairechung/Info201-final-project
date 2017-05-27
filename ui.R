@@ -1,8 +1,10 @@
 #ui.R
+install.packages("shinythemes")
+install.packages("plotly")
 library(shiny)
 library(plotly)
 library(shinythemes)
-#install.packages("shinythemes")
+
 
 
 shinyUI(fluidPage( theme=shinytheme("superhero"),
@@ -20,8 +22,8 @@ shinyUI(fluidPage( theme=shinytheme("superhero"),
       tabsetPanel(
         id="tabselected",
         tabPanel("Overview", value=1,textOutput("main.text")),
-        tabPanel("Graph", value=2, plotlyOutput("scatter")),
-        tabPanel("Table", value=3,plotlyOutput("table"))
+        tabPanel("Scatter", value=2, plotlyOutput("scatter")),
+        tabPanel("Bar", value=3,plotlyOutput("table"))
       )
     )
   )
