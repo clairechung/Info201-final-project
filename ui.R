@@ -14,7 +14,7 @@ shinyUI(fluidPage( theme=shinytheme("superhero"),
       conditionalPanel(condition='input.tabselected == 2', helpText("Scatterplot Panel"),
                        selectInput("scatter.options","Choose an option", choices = c("Option 1", "Option 2", "Option 3"))),
       conditionalPanel(condition='input.tabselected == 3', helpText("Table Panel"),
-                       selectInput("table.options","Choose an option", choices = c("All", "High Performance", "Middle Performance", "Low Performance")))
+                       selectInput("table.options","Choose level of Academic Performance", choices = c("All", "High Performance", "Middle Performance", "Low Performance")))
     ),
     mainPanel(
       tabsetPanel(
