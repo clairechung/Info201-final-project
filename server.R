@@ -34,6 +34,7 @@ shinyServer(function(input, output) {
     group.data$Class <- gsub('M', 2, group.data$Class)
     group.data$Class <- gsub('L', 1, group.data$Class)
     
+    # choose different data set as user input
     if(input$table.options == "High Performance") {
       group.data <- filter(group.data, Class == 3)
     } else if (input$table.options == "Middle Performance") {
@@ -42,19 +43,13 @@ shinyServer(function(input, output) {
       group.data <- filter(group.data, Class == 1)
     }
     
-    m <- list(
-      l = 80,
-      r = 50,
-      b = 80,
-      t = 20,
-      pad = 4
-    )
+    # for margin of grapgh
+    m <- list(l = 80, r = 50, b = 80, t = 20, pad = 4)
     
     # makes bar graph; xaxis is nationality of students and yaxis is active participation in class
     plot_ly(group.data, x = ~group.data$NationalITy, y = ~group.data$mean.activity, 
             type = 'bar', color = group.data$Class) %>%
       layout(yaxis = list(title = 'Level of Participation'), xaxis = list(title = 'Nationality'), barmode = 'stack', margin = m, height = 500)
-    
     
   })
   
