@@ -26,35 +26,36 @@ shinyUI(
                           #user input of gender
                           selectInput(inputId = "gender",
                                       label = "Gender:",
-                                      choices = c("Male", "Female"),
-                                      selected = "Male"),
+                                      choices = c("All", "Male" = "M", "Female" = "F"),
+                                      selected = "All"),
                           
                           #user input of grade level
                           selectInput(inputId = "grade",
                                       label = "Grade Level:",
-                                      choices = c("G-01", "G-02", "G-03", "G-04",
+                                      choices = c("All", "G-01", "G-02", "G-03", "G-04",
                                                   "G-05", "G-06", "G-07", "G-08", 
                                                   "G-09", "G-10", "G-11", "G-12"),
-                                      selected = "G-01"), 
+                                      selected = "All"), 
                           #user input of topic
                           selectInput(inputId = "topic", 
                                       label = "Topic:", 
-                                      choices = c("English", "French", "Arabic", "IT", "Math", 
+                                      choices = c("All", "English", "French", "Arabic", "IT", "Math", 
                                                   "Chemistry", "Biology", "Science", "History", 
                                                   "Spanish", "Quran", "Geology"), 
-                                      selected = "English"), 
+                                      selected = "All"), 
                           #user input of activity
                           selectInput(inputId = "activity", 
                                       label = "Activity:", 
-                                      choices = c("Raised hand", "Visited resource", "Viewing announcement", 
-                                                  "Discussion group", "Absence day"), 
-                                      selected = "Raised hand")
+                                      choices = c("All", "Raised hand" = "raisedhands", "Visited resource" = "VisITedResources", "Viewing announcement" = "AnnouncementsView", 
+                                                  "Discussion group" = "Discussion", "Absence day" = "StudentAbsenceDays"), 
+                                      selected = "All")
                         ),
                         mainPanel(
                           tabsetPanel(
                             tabPanel("Information"),
                             tabPanel("Table"),
-                            tabPanel("Graph")
+                            # tableOutput("table")
+                            tabPanel("Graph", plotlyOutput('scatterGraph'))
                         )
                         ))),
              tabPanel("Bar Graph",

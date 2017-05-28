@@ -3,7 +3,13 @@ library(plotly)
 library(stringr)
 
 ### Build Scatter ###
-BuildScatter <- function(data, xvar) {
+BuildScatter <- function(data, gender, grade, topic, activity) {
+  
+  output.data <- data
+  
+  if (gender != "All") {
+    output.data <- filter()
+  }
   
   # Get x and y max
   xmax <- max(data[,xvar]) * 1.5

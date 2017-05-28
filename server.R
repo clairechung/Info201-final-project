@@ -6,6 +6,7 @@ library(dplyr)
 source('./scripts/scatter.R')
 source('./scripts/bar.R')
 data <- read.csv(file='./data/xAPI-Edu-Data.csv', stringsAsFactors = FALSE)
+data <- select(data, -PlaceofBirth, -StageID, -SectionID, -Semester, -Relation, -ParentAnsweringSurvey, -ParentschoolSatisfaction)
 
 shinyServer(function(input, output) {
   output$main.text <- renderText({
@@ -22,8 +23,8 @@ shinyServer(function(input, output) {
                "3. What kinds of academic behavior leads to enhancing grade of students?", sep="<br/>"))
   })
   
-  output$scatter <- renderPlotly({
-    return(BuildScatter(data, input$table.options))
+  output$scatterGraph <- renderPlotly({
+    return(BuildScatter(data, input$gender, input$grade, input$topic, input$activity))
   })
   
   output$table <- renderPlotly({
