@@ -8,6 +8,12 @@ source('./scripts/bar.R')
 data <- read.csv(file='./data/xAPI-Edu-Data.csv', stringsAsFactors = FALSE)
 data <- select(data, -PlaceofBirth, -StageID, -SectionID, -Semester, -Relation, -ParentAnsweringSurvey, -ParentschoolSatisfaction)
 
+# 3 indicates high level (score of 90 - 100), 
+# 2 indicates middle level (70 - 89), 1 indicates low level (0-69)
+data$Class <- gsub('H', 3, data$Class)
+data$Class <- gsub('M', 2, data$Class)
+data$Class <- gsub('L', 1, data$Class)
+
 shinyServer(function(input, output) {
   output$main.text <- renderText({
     "The dataset is an educational data set which is collected from learning management system (LMS) called Kalboard 360. Kalboard 360 is a multi-agent LMS, which has been designed to facilitate learning through the use of leading-edge technology. The data is collected using a learner activity tracker tool, which called experience API (xAPI). The xAPI is a component of the training and learning architecture (TLA) that enables to monitor learning progress and learner’s actions like reading an article or watching a training video. There are 16 attributes in this data set. The students are divided into three intervals(numerical) based on their total grade or mark; Low-Level indicates grade 0 to 69, Middle-Level means 70 to 89, and High-Level represents the score of 90 to 100. 

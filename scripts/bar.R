@@ -6,12 +6,6 @@ BuildBar <- function(data, yvar) {
     summarise(mean.activity = mean(raisedhands+ VisITedResources+ AnnouncementsView+ Discussion)) %>%
     arrange(Class, NationalITy)
   
-  # 3 indicates high level (score of 90 - 100), 
-  # 2 indicates middle level (70 - 89), 1 indicates low level (0-69)
-  group.data$Class <- gsub('H', 3, group.data$Class)
-  group.data$Class <- gsub('M', 2, group.data$Class)
-  group.data$Class <- gsub('L', 1, group.data$Class)
-  
   # choose different data set as user input
   if(yvar == "High Performance") {
     group.data <- filter(group.data, Class == 3)
