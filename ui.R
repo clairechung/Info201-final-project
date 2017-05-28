@@ -1,31 +1,71 @@
 #ui.R
-install.packages("shinythemes")
-install.packages("plotly")
+#setup
+#install.packages("shinythemes")
+#install.packages("plotly")
+
 library(shiny)
 library(plotly)
 library(shinythemes)
 
 
-
-shinyUI(fluidPage( theme=shinytheme("superhero"),
-  titlePanel("Final Project - Team Run"),
-  
-  sidebarLayout(
-    sidebarPanel(
-      conditionalPanel(condition='input.tabselected == 1', helpText("Overview Panel")),
-      conditionalPanel(condition='input.tabselected == 2', helpText("Scatterplot Panel"),
-                       selectInput("scatter.options","Choose an option", choices = c("Option 1", "Option 2", "Option 3"))),
-      conditionalPanel(condition='input.tabselected == 3', helpText("Table Panel"),
-                       selectInput("table.options","Choose level of Academic Performance", choices = c("All", "High Performance", "Middle Performance", "Low Performance")))
-    ),
-    mainPanel(
-      tabsetPanel(
-        id="tabselected",
-        tabPanel("Overview", value=1,textOutput("main.text")),
-        tabPanel("Scatter", value=2, plotlyOutput("scatter")),
-        tabPanel("Bar", value=3,plotlyOutput("table"))
-      )
-    )
-  )
-  
-))
+shinyUI(
+  navbarPage(title = "TEAM RUN",
+             theme = shinytheme("superhero"),
+             tabPanel("Overview", 
+                      titlePanel("Project Proposal"),
+                      mainPanel("hello")),
+             tabPanel("Scatter",
+                      sidebarLayout(
+                        sidebarPanel(
+                          #user input of gender
+                          selectInput(inputId = "gender",
+                                      label = "Gender:",
+                                      choices = c("Male", "Female"),
+                                      selected = "Male"),
+                          
+                          #user input of grade level
+                          selectInput(inputId = "grade",
+                                      label = "Grade Level:",
+                                      choices = c("G-01", "G-02", "G-03", "G-04",
+                                                  "G-05", "G-06", "G-07", "G-08", 
+                                                  "G-09", "G-10", "G-11", "G-12"),
+                                      selected = "G-01"), 
+                          #user input of topic
+                          selectInput(inputId = "topic", 
+                                      label = "Topic:", 
+                                      choices = c("English", "French", "Arabic", "IT", "Math", 
+                                                  "Chemistry", "Biology", "Science", "History", 
+                                                  "Spanish", "Quran", "Geology"), 
+                                      selected = "English"), 
+                          #user input of activity
+                          selectInput(inputId = "activity", 
+                                      label = "Activity:", 
+                                      choices = c("Raised hand", "Visited resource", "Viewing announcement", 
+                                                  "Discussion group", "Absence day"), 
+                                      selected = "Raised hand")
+                        ),
+                        mainPanel(
+                          tabsetPanel(
+                            tabPanel("Information"),
+                            tabPanel("Table"),
+                            tabPanel("Graph")
+                        )
+                        ))),
+             tabPanel("Bar Graph",
+                      sidebarLayout(
+                        sidebarPanel(
+                          #user input of activity
+                          selectInput(inputId = "activity", 
+                                      label = "Activity:", 
+                                      choices = c("Raised hand", "Visited resource", "Viewing announcement", 
+                                                  "Discussion group", "Absence day"), 
+                                      selected = "Raised hand")
+                        ),
+                        mainPanel(
+                          tabsetPanel(
+                            tabPanel("Information"),
+                            tabPanel("Table"),
+                            tabPanel("Graph")
+                          )
+                        ))))
+)
