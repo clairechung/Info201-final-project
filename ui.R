@@ -12,8 +12,14 @@ shinyUI(
   navbarPage(title = "TEAM RUN",
              theme = shinytheme("superhero"),
              tabPanel("Overview", 
-                      titlePanel("Project Proposal"),
-                      mainPanel("hello")),
+                      mainPanel(
+                        tags$h1("Dataset"),
+                        tags$div(
+                          textOutput("main.text")), 
+                        tags$h1("Questions"), 
+                        tags$div(
+                          htmlOutput("question"))
+                      )),
              tabPanel("Scatter",
                       sidebarLayout(
                         sidebarPanel(
@@ -67,5 +73,8 @@ shinyUI(
                             tabPanel("Table"),
                             tabPanel("Graph")
                           )
-                        ))))
+                        )
+                      )
+              )
+  )
 )

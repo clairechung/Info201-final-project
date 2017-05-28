@@ -13,11 +13,13 @@ shinyServer(function(input, output) {
     There are multiple audiences that would be interested in using this dataset. 
     Parents, teachers, students, and anyone who is involved in education will be interested in using this dataset. 
     our project, we will be focusing on parents. A student’s performance in school usually concerns the parents, and organizing the dataset can provide visual insight on how certain factors affect students’ grades.
-    Here are some questions that our project will answer for the audience. 
-    
-    1. Students from which nation tend to achieve highest average academic performance? 
-    2. Do males tend to achieve better academic performance than females? 
-    3. What kinds of academic behavior leads to enhancing grade of students?"
+    Here are some questions that our project will answer for the audience."
+  })
+  
+  output$question <- renderText({
+    HTML(paste("1. Students from which nation tend to achieve highest average academic performance?",
+               "2. Do males tend to achieve better academic performance than females?",
+               "3. What kinds of academic behavior leads to enhancing grade of students?", sep="<br/>"))
   })
   
   output$scatter <- renderPlotly({
