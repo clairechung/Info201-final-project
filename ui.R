@@ -1,7 +1,7 @@
 #ui.R
 #setup
-#install.packages("shinythemes")
-#install.packages("plotly")
+install.packages("shinythemes")
+install.packages("plotly")
 
 library(shiny)
 library(plotly)
@@ -54,8 +54,7 @@ shinyUI(
                         mainPanel(
                           tabsetPanel(
                             tabPanel("Information"),
-                            tabPanel("Table"),
-                            # tableOutput("table")
+                            tabPanel("Table", dataTableOutput("scatterTable")),
                             tabPanel("Graph", plotlyOutput('scatterGraph'))
                         )
                         ))),
@@ -72,8 +71,8 @@ shinyUI(
                         mainPanel(
                           tabsetPanel(
                             tabPanel("Information"),
-                            tabPanel("Table"),
-                            tabPanel("Graph")
+                            tabPanel("Table", dataTableOutput("barTable")),
+                            tabPanel("Graph", plotlyOutput('barGraph'))
                           )
                         )
                       )

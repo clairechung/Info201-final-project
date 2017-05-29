@@ -29,12 +29,20 @@ shinyServer(function(input, output) {
                "3. What kinds of academic behavior leads to enhancing grade of students?", sep="<br/>"))
   })
   
+  ########## Scatter rendering graph & table ##########
   output$scatterGraph <- renderPlotly({
     return(BuildScatter(data, input$gender, input$grade, input$topic, input$activity))
   })
+  output$scatterTable <- renderDataTable({
+    return(ScatterTable(data, input$gender, input$grade, input$topic, input$activity))
+  })
   
-  output$table <- renderPlotly({
+  ########## Bar rendering graph & table ##########
+  output$barGraph <- renderPlotly({
     return(BuildBar(data, input$table.options))
+  })
+  output$barTable <- renderDataTable({
+    return(BarTable())
   })
   
   })

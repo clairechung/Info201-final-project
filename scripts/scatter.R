@@ -2,41 +2,50 @@
 library(plotly)
 library(stringr)
 
-### Build Scatter ###
+### Build Scatter Plot Graph###
 BuildScatter <- function(data, input.gender, input.grade, input.topic, activity) {
   
-  output.data <- data
-  
-  if (input.gender != "All") {
-    output.data <- filter(output.data, gender == input.gender)
-  }
-  if (input.grade != "All") {
-    output.data <- filter(output.data, GradeID == input.grade)
-  }
-  if (input.topic != "All") {
-    output.data <- filter(output.data, Topic == input.topic)
-  }
-
+  scatter.data <- DataPrep(data, input.gender, input.grade, input.topic)
   
   # Get x and y max
-  xmax <- max(output.data[,activity]) * 1.5
-  ymax <- as.numeric(max(output.data[,"Class"])) * 1.5
+  xmax <- max(scatter.data[,activity]) * 1.1
+  ymax <- as.numeric(max(scatter.data[,"Class"])) * 1.1
   x.equation <- paste0('~', activity)
   y.equation <- paste0('~', "Class")
   
-  print(xmax)
-  print(ymax)
-  
   # Returns a plotly map with rating as a y axis and given value as a x axis
-  return(plot_ly(data=output.data, x = eval(parse(text = x.equation)), 
+  return(plot_ly(data = scatter.data, x = eval(parse(text = x.equation)), 
                  y = eval(parse(text = y.equation)),
+                 type="scatter",
                  mode='markers', 
                  marker = list(
                    opacity = .4, 
                    size = 10
                  )) %>% 
-           layout(xaxis = list(range = c(0, xmax), title = activity), 
-                  yaxis = list(range = c(0, ymax), title = "Student Performance")
+           layout(xaxis = list(range = c(-1, xmax), title = activity), 
+                  yaxis = list(range = c(-1, ymax), title = "Student Performance")
            )
   )
+}
+
+### Build Table of data being used to draw the scatterplot ###
+ScatterTable <- function(data, input.gender, input.grade, input.topic, activity) {
+  table.data <- DataPrep(data, input.gender, input.grade, input.topic)
+  table.data <- select(table.data, -NationalITy) %>%
+                select(gender, GradeID, Topic, eval(parse(text = activity)))
+  return(table.data)
+}
+
+### Data prep for both scatterplot and table ###
+DataPrep <- function(data, input.gender, input.grade, input.topic) {
+  if (input.gender != "All") {
+    data <- filter(data, gender == input.gender)
+  }
+  if (input.grade != "All") {
+    data <- filter(data, GradeID == input.grade)
+  }
+  if (input.topic != "All") {
+    data <- filter(data, Topic == input.topic)
+  }
+  return(data)
 }
