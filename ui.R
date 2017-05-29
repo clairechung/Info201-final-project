@@ -62,8 +62,8 @@ shinyUI(
                       sidebarLayout(
                         sidebarPanel(
                           #user input of activity
-                          selectInput(inputId = "activity", 
-                                      label = "Activity:", 
+                          selectInput(inputId = "performance", 
+                                      label = "Performance:", 
                                       choices = c("High Performance", "Middle Performance", "Low Performance"), 
                                       selected = "Raised hand")
                         ),
