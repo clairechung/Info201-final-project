@@ -39,7 +39,7 @@ shinyServer(function(input, output) {
   
   ########## Bar rendering graph & table ##########
   output$barGraph <- renderPlotly({
-    return(BuildBar(data, input$table.options))
+    return(BuildBar(data, input$activity))
   })
   output$barTable <- renderDataTable({
     return(BarTable())

@@ -64,8 +64,7 @@ shinyUI(
                           #user input of activity
                           selectInput(inputId = "activity", 
                                       label = "Activity:", 
-                                      choices = c("Raised hand", "Visited resource", "Viewing announcement", 
-                                                  "Discussion group", "Absence day"), 
+                                      choices = c("High Performance", "Middle Performance", "Low Performance"), 
                                       selected = "Raised hand")
                         ),
                         mainPanel(
