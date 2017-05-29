@@ -64,7 +64,7 @@ shinyUI(
                           #user input of activity
                           selectInput(inputId = "performance", 
                                       label = "Performance:", 
-                                      choices = c("High Performance", "Middle Performance", "Low Performance"), 
+                                      choices = c("All","High Performance", "Middle Performance", "Low Performance"), 
                                       selected = "Raised hand")
                         ),
                         mainPanel(
