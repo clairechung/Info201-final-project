@@ -1,7 +1,7 @@
 #ui.R
 #setup
-install.packages("shinythemes")
-install.packages("plotly")
+#install.packages("shinythemes")
+#install.packages("plotly")
 
 library(shiny)
 library(plotly)
@@ -53,7 +53,22 @@ shinyUI(
                         ),
                         mainPanel(
                           tabsetPanel(
-                            tabPanel("Information"),
+                            tabPanel("Information", 
+                                     tags$p(
+                                       tags$br("Question: What factor(s) may affect the academic performance of the subjectives?"),
+                                       tags$br("Factor:"),
+                                       tags$ul(
+                                         tags$li("Gender: Male, Female"),
+                                         tags$li("Grade level: G-01 - G-12"),
+                                         tags$li("Topic: English, French, Arabic, IT, Math, Chemistry, Biology, Science, History, 
+                                                 Spanish, Quran, Geology"),
+                                         tags$li("Activity: Raised hand, Visited resource, Viewing announcement, Discussion group")
+                                       ),
+                                       tags$br(
+                                         tags$p("x-axis: factor"),
+                                         tags$p("y-axis: academic performance")),
+                                       tags$br("**scatter plot may not be displayed if there is no matching combination of chosen factors**")
+                                     )),
                             tabPanel("Table", dataTableOutput("scatterTable")),
                             tabPanel("Graph", plotlyOutput('scatterGraph'))
                         )

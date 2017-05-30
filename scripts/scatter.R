@@ -2,6 +2,20 @@
 library(plotly)
 library(stringr)
 
+### Data prep for both scatterplot and table ###
+DataPrep <- function(data, input.gender, input.grade, input.topic) {
+  if (input.gender != "All") {
+    data <- filter(data, gender == input.gender)
+  }
+  if (input.grade != "All") {
+    data <- filter(data, GradeID == input.grade)
+  }
+  if (input.topic != "All") {
+    data <- filter(data, Topic == input.topic)
+  }
+  return(data)
+}
+
 ### Build Scatter Plot Graph###
 BuildScatter <- function(data, input.gender, input.grade, input.topic, activity) {
   
@@ -34,18 +48,4 @@ ScatterTable <- function(data, input.gender, input.grade, input.topic, activity)
   table.data <- select(table.data, -NationalITy) %>%
                 select(gender, GradeID, Topic, eval(parse(text = activity)))
   return(table.data)
-}
-
-### Data prep for both scatterplot and table ###
-DataPrep <- function(data, input.gender, input.grade, input.topic) {
-  if (input.gender != "All") {
-    data <- filter(data, gender == input.gender)
-  }
-  if (input.grade != "All") {
-    data <- filter(data, GradeID == input.grade)
-  }
-  if (input.topic != "All") {
-    data <- filter(data, Topic == input.topic)
-  }
-  return(data)
 }
