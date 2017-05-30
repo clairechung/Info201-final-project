@@ -66,8 +66,9 @@ shinyUI(
                                        ),
                                        tags$br(
                                          tags$p("x-axis: factor"),
-                                         tags$p("y-axis: academic performance")),
-                                       tags$br("**scatter plot may not be displayed if there is no matching combination of chosen factors**")
+                                         tags$p("y-axis: academic performance")
+                                       ),
+                                       tags$p("**scatter plot may not be displayed if there is no matching combination of chosen factors**")
                                      )),
                             tabPanel("Table", dataTableOutput("scatterTable")),
                             tabPanel("Graph", plotlyOutput('scatterGraph'))
