@@ -25,6 +25,17 @@ BuildBar <- function(data, yvar) {
   )
 }
 
-BarTable <- function() {
+BarTable <- function(data, yvar) {
+  table.data <- group_by(data, NationalITy, Class) %>% 
+    summarise(mean.activity = mean(raisedhands+ VisITedResources+ AnnouncementsView+ Discussion)) %>%
+    arrange(Class, NationalITy)
   
+  if(yvar == "High Performance") {
+    table.data <- filter(table.data, Class == 3)
+  } else if (yvar == "Middle Performance") {
+    table.data <- filter(table.data, Class == 2)
+  } else if (yvar == "Low Performance") {
+    table.data <- filter(table.data, Class == 1)
+  }
+  return(table.data)
 }

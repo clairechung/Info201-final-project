@@ -42,7 +42,7 @@ shinyServer(function(input, output) {
     return(BuildBar(data, input$performance))
   })
   output$barTable <- renderDataTable({
-    return(BarTable())
+    return(BarTable(data, input$performance))
   })
   
   })
