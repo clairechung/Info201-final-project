@@ -3,7 +3,7 @@ BuildBar <- function(data, yvar) {
   # sum up value of Raised hand, Visited resources, Viewing announcements, Discussion groups
   # to find how much students participated in class in each nation (also what level did they get from the test)
   group.data <- group_by(data, NationalITy, Class) %>% 
-    summarise(mean.activity = mean(raisedhands+ VisITedResources+ AnnouncementsView+ Discussion)) %>%
+    summarise(mean.activity = mean(raisedhands + VisITedResources + AnnouncementsView + Discussion)) %>%
     arrange(Class, NationalITy)
   
   # choose different data set as user input
@@ -24,10 +24,11 @@ BuildBar <- function(data, yvar) {
            layout(yaxis = list(title = 'Level of Participation'), xaxis = list(title = 'Nationality'), barmode = 'stack', margin = m, height = 500)
   )
 }
-
 BarTable <- function(data, yvar) {
   table.data <- group_by(data, NationalITy, Class) %>% 
-    summarise(mean.activity = mean(raisedhands+ VisITedResources+ AnnouncementsView+ Discussion)) %>%
+    summarise(raisedhands = round(mean(raisedhands), digits = 1), VisITedResources = round(mean(VisITedResources), digits = 1), 
+              AnnouncementsView = round(mean(AnnouncementsView), digits = 1), Discussion = round(mean(Discussion), digits = 1),
+              mean.activity = mean(raisedhands + VisITedResources + AnnouncementsView + Discussion)) %>%
     arrange(Class, NationalITy)
   
   if(yvar == "High Performance") {
