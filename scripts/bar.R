@@ -24,6 +24,7 @@ BuildBar <- function(data, yvar) {
            layout(yaxis = list(title = 'Level of Participation'), xaxis = list(title = 'Nationality'), barmode = 'stack', margin = m, height = 500)
   )
 }
+
 BarTable <- function(data, yvar) {
   table.data <- group_by(data, NationalITy, Class) %>% 
     summarise(raisedhands = round(mean(raisedhands), digits = 1), VisITedResources = round(mean(VisITedResources), digits = 1), 
