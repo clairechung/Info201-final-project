@@ -87,28 +87,30 @@ shinyUI(
                             tabPanel("Graph", plotlyOutput('scatterGraph'),
                                      tags$p("**scatter plot may not be displayed if there is no matching combination of chosen factors**")
                             ),
-                            tabPanel("Summary", 
-                                     tags$p(
-                                       tags$br("Question: What factor(s) may affect the academic performance of the subjectives?"),
-                                       tags$br("Factor:"),
-                                       tags$ul(
-                                         tags$li("Gender: Male, Female"),
-                                         tags$li("Grade level: G-01 - G-12"),
-                                         tags$li("Topic: English, French, Arabic, IT, Math, Chemistry, Biology, Science, History, 
-                                                 Spanish, Quran, Geology"),
-                                         tags$li("Activity: Raised hand, Visited resource, Viewing announcement, Discussion group")
-                                         ),
-                                       tags$br(
-                                         tags$p("x-axis: factor"),
-                                         tags$p("y-axis: academic performance")
-                                       )
-                                       
-                                     )),
+                            tabPanel("Summary",
+                                     tags$br(),
+                                     tags$p("Students' academic performances are affected by various factors. With this scatterplot, we 
+                                            explore the correlation between students' activities and their academic perforamnce.
+                                            On the y-axis, students' academic performances are placed. 1 is low-performance, 2 is middle-performance, and 3 is high-performance."),
+                                      tags$p("The radio button available on the left side allows the users to choose differnet activity types the
+                                             students engaged in and see the correlation between the number of the activity students engaged in and the level of their academic performances."), 
+                                      tags$p("The correlation between students' activity and their acedemic performance could be stronger or weaker for different genders,
+                                            different grade levels, as well as for different subjects. The drop-down menu available below the activity choices
+                                            allow the users to filter data to see a specific group's correlations."),
+                                     tags$br(),
+                                     tags$p("*Disclaimer: "),
+                                      tags$ul(
+                                        tags$li("The dataset we use gives three nominal values for the students' performances: high, middle, and low performances. 
+                                            Students who received 69 is categorized into Low-Level performance, while students received 70 is categorized into Middle-Level performance, though their grades are very similar."),
+                                        tags$li("The graph also shows the correlation between the perforamnce and the frequency of academic activity students engaged in. However, 
+                                            correlation does not mean causation, and there could be other factors affecting one or both of the variable(s).")
+                                      )
+                                     ),
                             tabPanel("Table", dataTableOutput("scatterTable"))
                             )
                       ))),
              tabPanel("Bar Graph",
-                      titlePanel('What contributes to the ratings of cereal?'),
+                      titlePanel('Students from which nation tend to achieve highest average academic performance?'),
                       sidebarLayout(
                         sidebarPanel(
                           #user input of activity
@@ -121,17 +123,18 @@ shinyUI(
                           tabsetPanel(
                             tabPanel("Graph", plotlyOutput('barGraph')),
                             tabPanel("Summary", 
-                                     tags$p(
-                                       tags$br("Question1: Students from which nation tend to achieve highest average academic performance?"),
-                                       tags$br("Question2: How does having higher participation affect on achieveing better academic performance in each nation?"),
-                                       tags$br(
-                                         tags$p("x-axis: Nationality: Egypt, Iran, Iraq, Jordan, KW, lebanon, Lybia, Morocco, Palestine, SaudiArabia, Syria, Tunis, USA, venzuela"),
-                                         tags$p("y-axis: Level of Participation(Activity): Raised hand, Visited resource, Viewing announcement, Discussion group"),
-                                         tags$p("color of graph(in case of show all): degree of performance: High(score of 90 - 100), Middle(70 - 89), Low(0-69)")
-                                       ),
-                                       tags$p("The nation where showed best academic performance (put little effort but got the highest grade) is USA (about 224 times participating). 
-                                              The nation where showed worst academic performance (put lots of effort but got the lowest grade) is SaudiArabia (about 141 times participating). ")
-                                       )),
+                                     tags$br(),
+                                     tags$p("We explore following questions with the bar graph"),
+                                     tags$ol(
+                                       tags$li("Students from which nation more actively participate in academic activities?"),
+                                       tags$li("How does having higher participation affect on achieving better academic performance in each nation?")
+                                     ),
+                                     tags$p("The x-axis on the bar graph shows the Nationality: Egypt, Iran, Iraq, Jordan, KW, lebanon, Lybia, Morocco, Palestine, SaudiArabia, Syria, Tunis, USA, and venzuela"),
+                                     tags$p("The y-axis on the bar graph shows the Level of Participation(Activity): Average of Raised hand, Visited resource, Viewing announcement, Discussion group"),
+                                     tags$p("The aggregated bar graph shows the level of participation the students engage in in each country. The different color
+                                            means degree of performance. The selector on the left allows users to filter students into each performance level."),
+                                     tags$p("The nation where showed best academic performance is USA (about 224 times participating). The nation where showed worst academic performance is SaudiArabia (about 141 times participating).")
+                            ),
                             tabPanel("Table", dataTableOutput("barTable"))
                           )
                         )
