@@ -1,5 +1,8 @@
 # Info201-final-project
 
+## Project Link
+[Hosted webpage]("google.com")
+
 ## Overview
 We will be working with Students’ Academic Performance Dataset, obtained from kaggle.com. The dataset is an educational data set which is collected from learning management system (LMS) called Kalboard 360. Kalboard 360 is a multi-agent LMS, which has been designed to facilitate learning through the use of leading-edge technology. The data is collected using a learner activity tracker tool, which called experience API (xAPI). The xAPI is a component of the training and learning architecture (TLA) that enables to monitor learning progress and learner’s actions like reading an article or watching a training video. There are multiple audiences that would be interested in using this dataset.
 
@@ -19,6 +22,3 @@ We will be working with Students’ Academic Performance Dataset, obtained from 
 Jacquelin Huang, Claire(Hyewon) Chung, Jeewon Ha, and Lucy (MyungJin) Eun
 
 We are students in University of Washington who are taking INFO 201. We are interested in how different factors influence students' academic performance.
-
-## Project Link
-[link]("google.com")
