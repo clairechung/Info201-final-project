@@ -19,6 +19,6 @@ We will be working with Students’ Academic Performance Dataset, obtained from 
 4. How does having higher participation affect on achieving better academic performance in each nation?
 
 ## Authors
-Jacquelin Huang, Claire(Hyewon) Chung, Jeewon Ha, and Lucy (MyungJin) Eun
+Jacquelin Huang, Claire(Hae Won) Chung, Jeewon Ha, and Lucy (MyungJin) Eun
 
 We are students in University of Washington who are taking INFO 201. We are interested in how different factors influence students' academic performance.
